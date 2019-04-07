@@ -1,0 +1,13 @@
+.totalScore {
+  width: 80px;
+}
+
+.header {
+  width: 50px;
+  border-right: solid;
+}
+
+.finalRoundHeader {
+  width: 60px;
+  border-right: solid;
+}

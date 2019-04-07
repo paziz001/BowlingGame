@@ -11,35 +11,36 @@ namespace Web.Api.Domain
             var updatedRounds = new List<Round>(rounds);
             for (var i = 0; i < rounds.Count; i++)
             {
+                var previousRoundScore = i - 1 >= 0 ? updatedRounds[i - 1].Score.Value : 0;
                 if (rounds[i].Mark == RoundMark.Strike)
                 {
-                    updatedRounds[i] = new Round(rounds[i].FirstRoll, rounds[i].SecondRoll, CalculateStrikeRound(rounds, i));
+                    updatedRounds[i] = new Round(rounds[i].FirstRoll, rounds[i].SecondRoll, CalculateStrikeRound(rounds, i, previousRoundScore));
                 }
                 
                 if (rounds[i].Mark == RoundMark.Spare)
                 {
-                    var roundScore = rounds[i].FirstRoll + rounds[i].SecondRoll;
+                    var roundScore = previousRoundScore + rounds[i].FirstRoll + rounds[i].SecondRoll;
                     if (i + 1 < rounds.Count)
                     {
                         roundScore += rounds[i + 1].FirstRoll;
-                        var score = new RoundScore(true, roundScore);
-                        updatedRounds[i] = new Round(rounds[i].FirstRoll, rounds[i].SecondRoll, score);
+                        updatedRounds[i] = new Round(rounds[i].FirstRoll, rounds[i].SecondRoll, new RoundScore(true, roundScore));
                     }
                 }
 
                 if (rounds[i].Mark == RoundMark.Open)
                 {
-                    var score = new RoundScore(true, rounds[i].FirstRoll + rounds[i].SecondRoll);
-                    updatedRounds[i] = new Round(rounds[i].FirstRoll, rounds[i].SecondRoll, score);
+                    var roundScore = previousRoundScore + rounds[i].FirstRoll + rounds[i].SecondRoll;
+                    updatedRounds[i] = new Round(rounds[i].FirstRoll, rounds[i].SecondRoll, new RoundScore(true, roundScore));
                 }
             }
 
             return updatedRounds.Select(round => round.Score);
         }
 
-        private static RoundScore CalculateStrikeRound(IList<Round> rounds, int roundIndex)
+        private static RoundScore CalculateStrikeRound(IList<Round> rounds, int roundIndex, int previousRoundScore)
         {
-            var roundScore = rounds[roundIndex].FirstRoll;
+            
+            var roundScore = previousRoundScore + rounds[roundIndex].FirstRoll;
             var rollsScored = 0;
             const int strikeBonusRolls = 2;
             for (var j = roundIndex + 1; j <= roundIndex + strikeBonusRolls && rollsScored < strikeBonusRolls && j < rounds.Count; j++)

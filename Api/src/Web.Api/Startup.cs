@@ -16,9 +16,22 @@ namespace Web.Api
 
         public IConfiguration Configuration { get; }
 
+        private readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services
+                .AddCors(options =>
+                    {
+                        options.AddPolicy(MyAllowSpecificOrigins,
+                            builder =>
+                            {
+                                builder
+                                    .WithOrigins("http://localhost:4200")
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod();
+                            });
+                    })   
                 .AddSingleton<CommandHandler>()
                 .AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -28,12 +41,16 @@ namespace Web.Api
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.Use(async (context, next) =>
+                {
+                    await next.Invoke();
+                }).UseDeveloperExceptionPage();
             }
             
 
             app.UseHttpsRedirection()
-               .UseMvcWithDefaultRoute();
+                .UseCors(MyAllowSpecificOrigins)
+                .UseMvcWithDefaultRoute();
         }
     }
 }

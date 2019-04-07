@@ -2,7 +2,6 @@ namespace Web.Api.Domain.Models
 {
     public class Round
     {
-        //private RoundMark _mark;
         public int FirstRoll { get; }
         public int SecondRoll { get; }
         public RoundScore Score { get; }

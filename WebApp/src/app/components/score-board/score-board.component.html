@@ -1,0 +1,12 @@
+<div fxLayout="row">
+  <app-round-header class="header" [headerName]="headerName" *ngFor="let headerName of headerNames"></app-round-header>
+  <div class="finalRoundHeader">10</div>
+  <div class="totalScore">Total Score</div>
+</div>
+<div fxLayout="row">
+  <app-round-score-cell class="header" [rolls]="rollsForRound(i)" [score]="scoreForRound(i)" *ngFor="let headerName of headerNames; let i = index">
+  </app-round-score-cell>
+  <app-round-score-cell class="finalRoundHeader" [rolls]="rollsForFinalRound()" [score]="scoreForFinalRound()"></app-round-score-cell>
+  <div class="totalScore">{{totalScore}}</div>
+</div>
+

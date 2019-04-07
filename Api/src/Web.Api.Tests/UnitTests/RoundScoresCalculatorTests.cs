@@ -56,8 +56,8 @@ namespace Web.Api.Tests.UnitTests
             var expectedScores = new List<RoundScore>
             {
                 new RoundScore(true, 25),
-                new RoundScore(true, 18),
-                new RoundScore(true, 8)
+                new RoundScore(true, 43),
+                new RoundScore(true, 51)
             };
             
             RoundScoresCalculator.Calculate(rounds).Should().BeEquivalentTo(expectedScores);
@@ -75,7 +75,7 @@ namespace Web.Api.Tests.UnitTests
             var expectedScores = new List<RoundScore>
             {
                 new RoundScore(true, 17),
-                new RoundScore(true, 7),
+                new RoundScore(true, 24),
                 new RoundScore(false, 0)
             };
             
@@ -93,7 +93,7 @@ namespace Web.Api.Tests.UnitTests
             var expectedScores = new List<RoundScore>
             {
                 new RoundScore(true, 17),
-                new RoundScore(true, 7)
+                new RoundScore(true, 24)
             };
             
             RoundScoresCalculator.Calculate(rounds).Should().BeEquivalentTo(expectedScores);
@@ -189,7 +189,7 @@ namespace Web.Api.Tests.UnitTests
             var expectedScores = new List<RoundScore>
             {
                 new RoundScore(true, 10),
-                new RoundScore(true, 7)
+                new RoundScore(true, 17)
             };
             
             RoundScoresCalculator.Calculate(rounds).Should().BeEquivalentTo(expectedScores);
