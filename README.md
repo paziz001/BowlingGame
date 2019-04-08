@@ -11,5 +11,5 @@
 
 2. To build and serve the Web App<br>
   run `npm install` to install the project's node modules<br>
-  run `ng serve -o` inside a console from ./Api/Web.API<br>
+  run `ng serve -o` inside a console from ./WebApp/src<br>
   This will start a server at http://localhost:4200.<br>
