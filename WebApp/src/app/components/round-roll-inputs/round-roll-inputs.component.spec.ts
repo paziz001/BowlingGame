@@ -9,15 +9,15 @@ import {
   MatSelectModule,
 } from '@angular/material';
 
-import { RoundRollsComponent } from './round-rolls.component';
+import { RoundRollInputsComponent } from './round-roll-inputs.component';
 
 describe('RoundRollsComponent', () => {
-  let component: RoundRollsComponent;
-  let fixture: ComponentFixture<RoundRollsComponent>;
+  let component: RoundRollInputsComponent;
+  let fixture: ComponentFixture<RoundRollInputsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RoundRollsComponent ],
+      declarations: [ RoundRollInputsComponent ],
       imports: [
         NoopAnimationsModule,
         ReactiveFormsModule,
@@ -31,7 +31,7 @@ describe('RoundRollsComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RoundRollsComponent);
+    fixture = TestBed.createComponent(RoundRollInputsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

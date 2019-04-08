@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { RoundRollsComponent } from './components/round-rolls/round-rolls.component';
+import { RoundRollInputsComponent } from './components/round-roll-inputs/round-roll-inputs.component';
 import { MatInputModule, MatButtonModule, MatCardModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -20,7 +20,7 @@ import { HideRoundScorePipe } from './pipes/hide-round-score.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    RoundRollsComponent,
+    RoundRollInputsComponent,
     ScoreBoardComponent,
     RoundHeaderComponent,
     TotalScoreHeaderComponent,

@@ -1,7 +1,7 @@
 <div fxLayout="row">
   <app-round-header class="header" [headerName]="headerName" *ngFor="let headerName of headerNames"></app-round-header>
-  <div class="finalRoundHeader">10</div>
-  <div class="totalScore">Total Score</div>
+  <app-round-header class="finalRoundHeader" headerName="10"></app-round-header>
+  <app-round-header class="totalScore" headerName="Total Score"></app-round-header>
 </div>
 <div fxLayout="row">
   <app-round-score-cell class="header" [rolls]="rollsForRound(i)" [score]="scoreForRound(i)" *ngFor="let headerName of headerNames; let i = index">

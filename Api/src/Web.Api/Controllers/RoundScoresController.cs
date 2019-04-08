@@ -6,30 +6,24 @@ using Web.Api.Domain.Models;
 
 namespace Web.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("round-scores")]
     [ApiController]
-    public class GameController : ControllerBase
+    public class RoundScoresController : ControllerBase
     {
         private readonly CommandHandler _handler;
-        public GameController(CommandHandler handler)
+        public RoundScoresController(CommandHandler handler)
         {
             _handler = handler;
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Produces("application/json")]
-        [Route("round-scores/calculate")]
+        [Route("calculate")]
         public ActionResult<IEnumerable<RoundScore>> Calculate([FromBody] CalculateRoundScores calculateRoundScores)
         {
             return Ok(_handler.Handle(calculateRoundScores));
-        }
-        
-        [HttpGet]
-        [Route("round-scores/{id}")]
-        public ActionResult<IEnumerable<RoundScore>> Calculate(int id)
-        {
-            return Ok(id);
         }
     }
 }

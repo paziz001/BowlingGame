@@ -20,9 +20,7 @@
         </div>
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button [disabled]="gameFinished" mat-raised-button color="primary" (click)="submit()">Submit Rolls</button>
-      <button *ngIf="gameFinished" mat-raised-button color="primary" (click)="playAgain()">Play Again!</button>
-    </mat-card-actions>
+      <button [disabled]="gameFinished" type="button" mat-raised-button color="primary"  (click)="submit()">Submit Rolls</button>
+      <button *ngIf="gameFinished" type="button" mat-raised-button color="primary" (click)="playAgain()">Play Again!</button>
   </mat-card>
 </form>

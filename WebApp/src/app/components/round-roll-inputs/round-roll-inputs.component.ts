@@ -3,11 +3,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { RollsSubmitted } from '../../data/events/rolls-submitted';
 
 @Component({
-  selector: 'app-round-rolls',
-  templateUrl: './round-rolls.component.html',
-  styleUrls: ['./round-rolls.component.css']
+  selector: 'app-round-roll-inputs',
+  templateUrl: './round-roll-inputs.component.html',
+  styleUrls: ['./round-roll-inputs.component.css']
 })
-export class RoundRollsComponent implements OnChanges {
+export class RoundRollInputsComponent implements OnChanges {
   @Input() gameFinished: boolean;
   @Output() submitRolls: EventEmitter<RollsSubmitted> = new EventEmitter<RollsSubmitted>();
   @Output() resetGame: EventEmitter<any> = new EventEmitter<any>();

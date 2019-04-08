@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Web.Api.Commands;
+using Web.Api.Validators;
 
 namespace Web.Api
 {
@@ -31,9 +34,11 @@ namespace Web.Api
                                     .AllowAnyHeader()
                                     .AllowAnyMethod();
                             });
-                    })   
+                    })
                 .AddSingleton<CommandHandler>()
+                .AddTransient<IValidator<CalculateRoundScores>, CalculateRoundScoresValidator>()
                 .AddMvc()
+                .AddFluentValidation()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

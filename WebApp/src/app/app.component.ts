@@ -30,10 +30,10 @@ export class AppComponent implements OnInit {
     if(this.rounds.length == 9 && rollsSubmitted.firstRoll + rollsSubmitted.secondRoll < 10) {
       this.gameFinished = true;
     }
-    if(this.rounds.length == 10 && this.rounds[9].rolls.firstRoll < 10 && rollsSubmitted.firstRoll <= 10) {
+    if(this.rounds.length == 10 && this.rounds[9].rolls.firstRoll < 10 && rollsSubmitted.secondRoll == 0) {
       this.gameFinished = true;
     }
-    if(this.rounds.length == 11) {
+    if(this.rounds.length == 11 && rollsSubmitted.secondRoll == 0) {
       this.gameFinished = true;
     }
     this.roundScoresService.calculateRoundScores(this.constructServiceRequest(rollsSubmitted))

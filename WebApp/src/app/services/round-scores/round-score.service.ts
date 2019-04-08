@@ -14,7 +14,7 @@ export class RoundScoreService {
 
   calculateRoundScores(calculateRoundScores: CalculateRoundScores): Observable<any> {
     let body = JSON.stringify(calculateRoundScores);
-    return this.client.post(`${this.baseUrl}/api/game/round-scores/calculate`, body, {
+    return this.client.post(`${this.baseUrl}/round-scores/calculate`, body, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8',
       }),
